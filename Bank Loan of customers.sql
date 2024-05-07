@@ -2,12 +2,10 @@ create database Bank_Analytics ;
 
 use bank_analytics;
 
-select * from finance_1 f1 join
-finance_2 f2 on f1.id = f2.id;
-
 # ALL KPIS : - 
 
-# Year wise loan amount Stats #
+# Year wise loan amount Stats 
+  
 SELECT year(issue_d) AS Year_of_issue_date, concat("$",format(round(sum(loan_amnt)/100000,2),2),"M") AS Total_loan_amount FROM finance_1 
 GROUP BY Year_of_issue_date
 ORDER BY Year_of_issue_date;
@@ -38,6 +36,3 @@ select home_ownership, sum(last_pymnt_d) as Last_payment_date
 from finance_1 f1 join finance_2 f2 on f1.id = f2.id
 group by home_ownership
 order by Last_payment_date desc;
-
-
-
